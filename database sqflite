@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(App());
+
+class App extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'muhammad arif sanjaya sebayang / 6SIA10',
+      home: Scaffold( backgroundColor: Colors.blueGrey,
+        appBar: AppBar( 
+          title: Text('Input data pemain'),
+        ),
+        body: Musik(),
+      ),
+    );
+  }
+}
+
+class Data pemain {
+  String pemain;
+  String klub;
+  String kontrak;
+
+  DataMusik({this.pemain, this.klub, this.kontrak});
+}
+
+// class pemain
+class pemain extends StatefulWidget {
+  _MyappState createState() => _MyappState();
+}
+
+class _MyappState extends State<pemain> {
+  //deklarasi variabel
+  final txtpemain = TextEditingController();
+  final txtklub = TextEditingController();
+  final txtkontrak = TextEditingController();
+
+  List<Widget> data = [];
+
+  onSimpan() {
+    setState(() {
+      data.add(ListTile(
+        title: Text(txtpemain.text),
+        subtitle: Text(txtklub.text),
+        trailing: Text(txtkontrak.text),
+      ));
+      txtpemain.clear();
+      txtklub.clear();
+      txtkontrak.clear();
+    });
+  }
+
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        new Container(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              TextField(
+                controller: txtpemainl,
+                decoration: InputDecoration(hintText: 'nama pemain'),
+              ),
+              TextField(
+                controller: txtklub,
+                decoration: InputDecoration(hintText: 'Nama klub sepak bola'),
+              ),
+              TextField(
+                controller: txtkontrak,
+                decoration: InputDecoration(hintText: 'Tahun di kontrak'),
+              ),
+              Divider(height: 5.0),
+              ElevatedButton(child: Text("Simpan"), onPressed: onSimpan),
+            ],
+          ),
+        ),
+        new Column(
+          children: data,
+        )
+      ],
+    );
+  }
+}
