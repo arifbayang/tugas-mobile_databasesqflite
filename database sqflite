@@ -10,7 +10,7 @@ class App extends StatelessWidget {
         appBar: AppBar( 
           title: Text('Input data pemain'),
         ),
-        body: Musik(),
+        body: pemain(),
       ),
     );
   }
